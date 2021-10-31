@@ -19,8 +19,8 @@ class NearbySoundAction(val sound: Sound) : Action() {
         pitch: FloatRange
     ): this(Sound.sound(effect, category, volume.random(), pitch.random()))
 
-    override fun invoke(entity: Entity, target: Entity?) {
-        entity.instance!!.playSound(sound, entity.position)
+    override fun invoke(source: Entity, target: Entity?) {
+        source.instance!!.playSound(sound, source.position)
     }
 
 }

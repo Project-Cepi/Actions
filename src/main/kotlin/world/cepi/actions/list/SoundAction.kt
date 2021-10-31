@@ -18,8 +18,7 @@ class SoundAction(val sound: Sound) : Action() {
         pitch: FloatRange
     ): this(Sound.sound(effect, category, volume.random(), pitch.random()))
 
-    override fun invoke(entity: Entity, target: Entity?) {
-        (entity as? Player)?.playSound(sound)
+    override fun invoke(source: Entity, target: Entity?) {
         (target as? Player)?.playSound(sound)
     }
 

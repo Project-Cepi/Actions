@@ -3,12 +3,10 @@ package world.cepi.actions.list
 import net.minestom.server.entity.Entity
 import world.cepi.actions.Action
 
-class FlingAction(val up: Double) : Action() {
+class RemoveAction : Action() {
 
     override fun invoke(source: Entity, target: Entity?) {
-        target?.let {
-            it.velocity = it.velocity.add(.0, up, .0)
-        }
+        target?.remove()
     }
 
 }
