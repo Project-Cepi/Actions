@@ -7,7 +7,11 @@ import world.cepi.kstom.command.kommand.Kommand
 
 object ActionCommand : Kommand({
     actions.forEach { clazz ->
-        createSyntaxesFrom(clazz, clazz.simpleName!!.dropLast("Action".length).literal()) { action ->
+        createSyntaxesFrom(clazz, clazz.simpleName!!
+            .dropLast("Action".length)
+            .replaceFirstChar { it.lowercase() }
+            .literal()
+        ) { action ->
             action.invoke(player, player)
         }
     }
