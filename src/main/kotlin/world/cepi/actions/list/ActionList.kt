@@ -1,3 +1,3 @@
 package world.cepi.actions.list
 
-val actions = listOf(SoundAction::class, NearbySoundAction::class)
+val actions = listOf(SoundAction::class, NearbySoundAction::class, FlingAction::class)
