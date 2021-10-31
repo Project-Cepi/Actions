@@ -38,7 +38,10 @@ dependencies {
     compileOnly(kotlin("reflect"))
 
     // Compile Minestom into project
-    compileOnly("com.github.Minestom:Minestom:-SNAPSHOT")
+    compileOnly("com.github.Minestom:Minestom:fb39fa59f5")
+
+    // Add KStom
+    compileOnly("com.github.Project-Cepi:KStom:c743081338")
 
     // import kotlinx serialization
     compileOnly("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
