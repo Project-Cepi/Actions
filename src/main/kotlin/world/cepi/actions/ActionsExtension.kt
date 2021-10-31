@@ -6,8 +6,6 @@ import world.cepi.actions.command.ActionCommand
 class ActionsExtension : Extension() {
 
     override fun initialize() {
-        ActionCommand.register()
-
         logger.info("[Actions] has been enabled!")
     }
 
@@ -15,6 +13,10 @@ class ActionsExtension : Extension() {
         ActionCommand.unregister()
 
         logger.info("[Actions] has been disabled!")
+    }
+
+    override fun postInitialize() {
+        ActionCommand.register()
     }
 
 }
