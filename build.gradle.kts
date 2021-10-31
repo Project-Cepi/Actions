@@ -76,6 +76,18 @@ tasks {
 
 }
 
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = project.properties["group"] as? String?
+            artifactId = project.name
+            version = project.properties["version"] as? String?
+
+            from(components["java"])
+        }
+    }
+}
+
 java {
     sourceCompatibility = JavaVersion.VERSION_16
     targetCompatibility = JavaVersion.VERSION_16
