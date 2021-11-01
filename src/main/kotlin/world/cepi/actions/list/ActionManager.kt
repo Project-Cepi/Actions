@@ -9,4 +9,8 @@ object ActionManager : MutableList<KClass<out Action>> by mutableListOf(
     FlingAction::class,
     RemoveAction::class,
     MessageAction::class
-)
+) {
+    fun add(vararg classes: KClass<out Action>) = addAll(classes)
+
+    inline fun <reified T: Action> add() = add(T::class)
+}
