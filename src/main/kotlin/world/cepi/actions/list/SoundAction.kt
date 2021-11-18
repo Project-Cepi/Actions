@@ -1,5 +1,6 @@
 package world.cepi.actions.list
 
+import kotlinx.serialization.Serializable
 import net.kyori.adventure.sound.Sound
 import net.minestom.server.entity.Entity
 import net.minestom.server.entity.Player
@@ -9,6 +10,7 @@ import world.cepi.actions.Action
 import world.cepi.kstom.command.arguments.generation.annotations.GenerationConstructor
 import world.cepi.kstom.util.random
 
+@Serializable
 class SoundAction(val sound: Sound) : Action() {
 
     @GenerationConstructor constructor(

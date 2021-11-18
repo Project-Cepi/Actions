@@ -1,9 +1,11 @@
 package world.cepi.actions.list
 
+import kotlinx.serialization.Serializable
 import net.minestom.server.entity.Entity
 import world.cepi.actions.Action
 
-class FlingAction(val up: Double) : Action() {
+@Serializable
+data class FlingAction(val up: Double) : Action() {
 
     override fun invoke(source: Entity, target: Entity?) {
         target?.let {
