@@ -8,7 +8,7 @@ import world.cepi.kstom.item.set
 @Serializable
 data class ActionItem(
     val action: Action,
-    val timing: ActionTiming
+    val timing: ActionTiming? = null
 ) {
     fun renderItem() = item(Material.RED_DYE) {
         this["action"] = this@ActionItem

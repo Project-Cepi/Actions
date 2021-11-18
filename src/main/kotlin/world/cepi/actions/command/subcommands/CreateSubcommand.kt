@@ -1,5 +1,7 @@
 package world.cepi.actions.command.subcommands
 
+import world.cepi.actions.Action
+import world.cepi.actions.ActionItem
 import world.cepi.actions.list.ActionManager
 import world.cepi.kstom.command.arguments.generation.generateSyntaxes
 import world.cepi.kstom.command.arguments.literal
@@ -13,7 +15,7 @@ object CreateSubcommand : Kommand({
             .replaceFirstChar { it.lowercase() }.literal()
 
         syntaxes.applySyntax(this, actionLiteral) { action ->
-            action.invoke(player, player)
+            player.inventory.addItemStack(ActionItem(action).renderItem())
         }
     }
 }, "create")
