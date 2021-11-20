@@ -9,7 +9,7 @@ import world.cepi.kstom.command.kommand.Kommand
 
 class EventNodeTargetMap<T : Event>(val node: EventNode<T>, val mapper: T.() -> Pair<Entity, Entity>)
 
-class EventSubcommand(
+open class EventSubcommand(
     name: String = "event",
     val eventNodes: List<EventNodeTargetMap<out Event>>,
     /** The amount to drop from the beginning of the string. Ex mobUUIDInitialize, drop the length of mobUUID*/
