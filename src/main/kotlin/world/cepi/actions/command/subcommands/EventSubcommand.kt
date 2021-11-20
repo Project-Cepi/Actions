@@ -11,13 +11,15 @@ class EventNodeTargetMap<T : Event>(val node: EventNode<T>, val mapper: T.() -> 
 
 open class EventSubcommand(
     name: String = "event",
-    val eventNodes: List<EventNodeTargetMap<out Event>>,
-    /** The amount to drop from the beginning of the string. Ex mobUUIDInitialize, drop the length of mobUUID*/
-    val eventNodeDrop: Int
+    val eventNodes: List<Pair<SyntaxContext.() -> EventNodeTargetMap<out Event>, String>>
 ) : Kommand({
 
-    eventNodes.forEach { target ->
-        syntax(target.node.name.drop(eventNodeDrop).literal()) {
+    eventNodes.forEach { targetLambdaPair ->
+        
+        syntax(targetLambdaPair.second.literal()) {
+
+            val target = targetLambdaPair.first(this)
+
             val item = player.itemInMainHand.actionItem ?: return@syntax
 
             target as EventNodeTargetMap<Event>
