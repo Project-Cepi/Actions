@@ -11,14 +11,17 @@ class EventNodeTargetMap<T : Event>(val node: EventNode<T>, val mapper: T.() -> 
 
 open class EventSubcommand(
     name: String = "event",
-    val eventNodes: List<Pair<SyntaxContext.() -> EventNodeTargetMap<out Event>, String>>
+    val eventCondition: SyntaxContext.() -> Boolean = { true },
+    val eventNodes: List<Pair<SyntaxContext.() -> EventNodeTargetMap<out Event>?, String>>
 ) : Kommand({
 
     eventNodes.forEach { targetLambdaPair ->
-        
+
         syntax(targetLambdaPair.second.literal()) {
 
-            val target = targetLambdaPair.first(this)
+            if (!eventCondition(this)) return@syntax
+
+            val target = targetLambdaPair.first(this) ?: return@syntax
 
             val item = player.itemInMainHand.actionItem ?: return@syntax
 
