@@ -14,7 +14,7 @@ data class ActionEventHandler(
     val listToItem: Player.(List<ActionItem>) -> ItemStack
 )
 
-open class EventSubcommand<T>(
+open class EventSubcommand(
     name: String = "event",
     val eventCondition: Kommand.SyntaxContext.() -> Boolean = { true },
     val eventNodes: List<ActionEventHandler>
