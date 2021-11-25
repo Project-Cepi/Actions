@@ -14,7 +14,7 @@ data class ActionItem(
     val timing: ActionTiming? = null
 ) {
     fun renderItem() = item(Material.RED_DYE) {
-        this["action"] = this@ActionItem
+        this["action", ActionSerializer.module] = this@ActionItem
     }
 
     operator fun invoke(source: Entity, target: Entity) {
