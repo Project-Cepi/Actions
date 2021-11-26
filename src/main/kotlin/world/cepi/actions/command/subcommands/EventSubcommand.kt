@@ -24,9 +24,15 @@ open class EventSubcommand(
 
         syntax(targetLambdaPair.name.literal()) {
 
-            if (!eventCondition(this)) return@syntax
+            if (!eventCondition(this)) sender.sendMessage("Condition not passed!")
 
-            player.itemInMainHand = targetLambdaPair.listToItem(player, targetLambdaPair.grabList(player) + (player.itemInMainHand.actionItem ?: return@syntax))
+            player.itemInMainHand = targetLambdaPair.listToItem(
+                player,
+                targetLambdaPair.grabList(player) + (player.itemInOffHand.actionItem ?: run {
+                    sender.sendMessage("Could not find action item in off hand!")
+                    return@syntax
+                })
+            )
         }
     }
 
