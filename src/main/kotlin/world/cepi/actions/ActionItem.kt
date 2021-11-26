@@ -3,6 +3,7 @@ package world.cepi.actions
 import kotlinx.serialization.Serializable
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.NamedTextColor
+import net.kyori.adventure.text.format.TextDecoration
 import net.minestom.server.entity.Entity
 import net.minestom.server.item.ItemStack
 import net.minestom.server.item.Material
@@ -20,7 +21,7 @@ data class ActionItem(
         displayName(
             Component.text(Regex("[A-Z][a-z]+")
                 .findAll(action::class.simpleName!!)
-                .map { it.value }.joinToString(" "), NamedTextColor.RED)
+                .map { it.value }.joinToString(" "), NamedTextColor.RED).decoration(TextDecoration.ITALIC, false)
         )
 
         if (timing != null) lore(
