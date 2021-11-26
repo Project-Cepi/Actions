@@ -38,4 +38,4 @@ data class ActionItem(
 
 }
 
-val ItemStack.actionItem: ActionItem? get() = this.get("action")
+val ItemStack.actionItem: ActionItem? get() = this.get("action", ActionSerializer.module)
