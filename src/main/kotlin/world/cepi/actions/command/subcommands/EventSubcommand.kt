@@ -26,7 +26,7 @@ open class EventSubcommand(
 
             if (!eventCondition(this)) return@syntax
 
-            targetLambdaPair.listToItem(player, targetLambdaPair.grabList(player) + (player.itemInMainHand.actionItem ?: return@syntax))
+            player.itemInMainHand = targetLambdaPair.listToItem(player, targetLambdaPair.grabList(player) + (player.itemInMainHand.actionItem ?: return@syntax))
         }
     }
 
