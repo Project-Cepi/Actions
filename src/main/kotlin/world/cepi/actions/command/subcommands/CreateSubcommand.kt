@@ -16,11 +16,8 @@ object CreateSubcommand : Kommand({
             .dropLast("Action".length)
             .replaceFirstChar { it.lowercase() }.literal()
 
-        val swapType = ArgumentType.Enum("swapType", TargetArgumentType::class.java)
-            .setDefaultValue(TargetArgumentType.NORMAL)
-
-        syntaxes.applySyntax(this, actionLiteral, swapType) { action ->
-            player.inventory.addItemStack(ActionItem(action, targetArgType = !swapType).renderItem())
+        syntaxes.applySyntax(this, actionLiteral) { action ->
+            player.inventory.addItemStack(ActionItem(action).renderItem())
         }
     }
 }, "create")
