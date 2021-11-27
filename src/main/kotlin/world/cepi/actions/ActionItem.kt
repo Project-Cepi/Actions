@@ -15,7 +15,8 @@ import world.cepi.kstom.item.set
 data class ActionItem(
     val action: Action,
     val timing: ActionTiming? = null,
-    val targetArgType: TargetArgumentType = TargetArgumentType.NORMAL
+    val targetArgType: TargetArgumentType = TargetArgumentType.NORMAL,
+    val targetSystem: TargetSystemType = TargetSystemType.Normal
 ) {
     fun renderItem() = item(Material.RED_DYE) {
 
@@ -34,7 +35,9 @@ data class ActionItem(
     }
 
     operator fun invoke(source: Entity, target: Entity) {
-        targetArgType.lambda(source, target).let { action.invoke(it.first, it.second) }
+        targetSystem.lambda(source, target).forEach { targetSystemPair ->
+            targetArgType.lambda(targetSystemPair.first, targetSystemPair.second).let { action.invoke(it.first, it.second) }
+        }
     }
 
 }
