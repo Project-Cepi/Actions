@@ -14,7 +14,8 @@ import world.cepi.kstom.item.set
 @Serializable
 data class ActionItem(
     val action: Action,
-    val timing: ActionTiming? = null
+    val timing: ActionTiming? = null,
+    val targetArgType: TargetArgumentType = TargetArgumentType.NORMAL
 ) {
     fun renderItem() = item(Material.RED_DYE) {
 
@@ -33,7 +34,7 @@ data class ActionItem(
     }
 
     operator fun invoke(source: Entity, target: Entity) {
-        action.invoke(source, target)
+        targetArgType.lambda(source, target).let { action.invoke(it.first, it.second) }
     }
 
 }
