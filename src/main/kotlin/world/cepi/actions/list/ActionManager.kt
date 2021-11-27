@@ -13,7 +13,6 @@ object ActionManager : Iterable<KClass<out Action>> {
 
     private val list = mutableListOf(
         SoundAction::class,
-        NearbySoundAction::class,
         FlingAction::class,
         RemoveAction::class,
         MessageAction::class

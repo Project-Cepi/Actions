@@ -22,7 +22,6 @@ object ActionSerializer {
         polymorphic(Action::class) {
             subclass(FlingAction::class)
             subclass(MessageAction::class)
-            subclass(NearbySoundAction::class)
             subclass(RemoveAction::class)
             subclass(SoundAction::class)
 
