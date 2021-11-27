@@ -26,9 +26,9 @@ data class ActionItem(
                 .map { it.value }.joinToString(" "), NamedTextColor.RED).decoration(TextDecoration.ITALIC, false)
         )
 
-        if (timing != null) lore(
+        lore(
             Component.empty(),
-            Component.text("Repeats every ${timing.repeatEvery.seconds}s, ${timing.repeatAmount} times")
+            timing?.display() ?: Component.text("No timing", NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, false)
         )
 
         this["action", ActionSerializer.module] = this@ActionItem

@@ -17,7 +17,7 @@ object TargetSystemSubcommand : Kommand({
 
     syntax("near".literal(), distance) {
         player.itemInMainHand = (player.itemInMainHand.actionItem ?: return@syntax)
-            .copy(targetSystem = TargetSystemType.Normal).renderItem()
+            .copy(targetSystem = TargetSystemType.Nearby(!distance)).renderItem()
     }
 
 }, "target")
