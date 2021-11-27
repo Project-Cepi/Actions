@@ -7,11 +7,15 @@ import net.minestom.server.sound.SoundEvent
 import net.minestom.server.utils.math.FloatRange
 import world.cepi.actions.Action
 import world.cepi.kstom.command.arguments.generation.annotations.GenerationConstructor
+import world.cepi.kstom.serializer.SoundSerializer
 import world.cepi.kstom.util.playSound
 import world.cepi.kstom.util.random
 
 @Serializable
-data class NearbySoundAction(val sound: Sound) : Action() {
+data class NearbySoundAction(
+    @Serializable(with = SoundSerializer::class)
+    val sound: Sound
+) : Action() {
 
     @GenerationConstructor
     constructor(

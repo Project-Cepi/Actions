@@ -8,10 +8,14 @@ import net.minestom.server.sound.SoundEvent
 import net.minestom.server.utils.math.FloatRange
 import world.cepi.actions.Action
 import world.cepi.kstom.command.arguments.generation.annotations.GenerationConstructor
+import world.cepi.kstom.serializer.SoundSerializer
 import world.cepi.kstom.util.random
 
 @Serializable
-class SoundAction(val sound: Sound) : Action() {
+class SoundAction(
+    @Serializable(with = SoundSerializer::class)
+    val sound: Sound
+) : Action() {
 
     @GenerationConstructor constructor(
         effect: SoundEvent,

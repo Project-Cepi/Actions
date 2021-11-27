@@ -1,6 +1,10 @@
 package world.cepi.actions.list
 
+import kotlinx.serialization.InternalSerializationApi
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.serializer
 import world.cepi.actions.Action
+import world.cepi.actions.ActionSerializer
 import kotlin.reflect.KClass
 
 object ActionManager : Iterable<KClass<out Action>> {
@@ -15,8 +19,17 @@ object ActionManager : Iterable<KClass<out Action>> {
         MessageAction::class
     )
 
-    fun add(vararg classes: KClass<out Action>) = list.addAll(classes)
+    @OptIn(InternalSerializationApi::class)
+    fun add(vararg classes: KClass<out Action>) {
+        list.addAll(classes)
+        ActionSerializer.actions.addAll(classes.map { ActionSerializer.ActionType(it, it.serializer()) })
+    }
+
     fun remove(clazz: KClass<out Action>) = list.remove(clazz)
 
-    inline fun <reified T: Action> add() = add(T::class)
+    @OptIn(InternalSerializationApi::class)
+    inline fun <reified T: Action> add() {
+        add(T::class)
+        ActionSerializer.actions.add(ActionSerializer.ActionType(T::class, T::class.serializer()))
+    }
 }
