@@ -13,8 +13,11 @@ import kotlin.reflect.KClass
 
 object ActionSerializer {
 
-    val actions = mutableListOf<KClass<out Action>>()
+    class ActionType(val clazz: KClass<out Action>, val serializer: KSerializer<out Action>)
 
+    val actions = mutableListOf<ActionType>()
+
+    @OptIn(InternalSerializationApi::class)
     val module get() = SerializersModule {
         polymorphic(Action::class) {
             subclass(FlingAction::class)
@@ -22,6 +25,10 @@ object ActionSerializer {
             subclass(NearbySoundAction::class)
             subclass(RemoveAction::class)
             subclass(SoundAction::class)
+
+            actions.forEach {
+                subclass(it.clazz as KClass<Action>, it.serializer as KSerializer<Action>)
+            }
         }
     }
 }
