@@ -30,7 +30,8 @@ data class ActionItem(
 
         lore(
             Component.empty(),
-            timing?.display() ?: Component.text("Timing: None", NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, false),
+            timing?.display() ?: Component.text("Timing: ", NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, false)
+                .append(Component.text("None", NamedTextColor.RED)),
             Component.text("Swap Type: ", NamedTextColor.GRAY).append(Component.text(targetArgType.demonstrate, NamedTextColor.RED)).decoration(TextDecoration.ITALIC, false),
             Component.text("Targeting: ", NamedTextColor.GRAY).append(Component.text(targetSystem.display, NamedTextColor.RED)).decoration(TextDecoration.ITALIC, false)
         )
