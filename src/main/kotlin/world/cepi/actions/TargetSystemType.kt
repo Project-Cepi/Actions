@@ -16,12 +16,15 @@ sealed class TargetSystemType {
     }
 
     @Serializable
-    data class Nearby(val radius: Double) : TargetSystemType() {
+    data class Nearby(
+        val radius: Double,
+        val keepPlayer: Boolean = false
+    ) : TargetSystemType() {
 
         @Transient
         override val lambda: ((Entity, Entity?) -> List<Pair<Entity, Entity?>>) = { source, _ ->
             source.instance!!.entities
-                .filter { it != source }
+                .filter { keepPlayer || it != source }
                 .filter { it.getDistance(source) <= radius }
                 .map { source to it }
         }

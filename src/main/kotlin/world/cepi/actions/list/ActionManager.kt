@@ -1,7 +1,6 @@
 package world.cepi.actions.list
 
 import kotlinx.serialization.InternalSerializationApi
-import kotlinx.serialization.KSerializer
 import kotlinx.serialization.serializer
 import world.cepi.actions.Action
 import world.cepi.actions.ActionSerializer
@@ -17,7 +16,9 @@ object ActionManager : Iterable<KClass<out Action>> {
         RemoveAction::class,
         DebugAction::class,
         DashAction::class,
-        MessageAction::class
+        MessageAction::class,
+        VampireFixedAction::class,
+        VampirePercentageAction::class
     )
 
     @OptIn(InternalSerializationApi::class)

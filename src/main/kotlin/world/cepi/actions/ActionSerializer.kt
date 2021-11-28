@@ -1,10 +1,6 @@
 package world.cepi.actions
 
 import kotlinx.serialization.*
-import kotlinx.serialization.builtins.serializer
-import kotlinx.serialization.descriptors.SerialDescriptor
-import kotlinx.serialization.encoding.Decoder
-import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.modules.SerializersModule
 import kotlinx.serialization.modules.polymorphic
 import kotlinx.serialization.modules.subclass
@@ -26,6 +22,8 @@ object ActionSerializer {
             subclass(SoundAction::class)
             subclass(DebugAction::class)
             subclass(DashAction::class)
+            subclass(VampireFixedAction::class)
+            subclass(VampirePercentageAction::class)
 
             actions.forEach {
                 subclass(it.clazz as KClass<Action>, it.serializer as KSerializer<Action>)
