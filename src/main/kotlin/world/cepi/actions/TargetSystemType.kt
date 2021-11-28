@@ -8,7 +8,7 @@ import world.cepi.kstom.util.sendMessage
 
 @Serializable
 sealed class TargetSystemType(
-    @Transient val lambda: (Entity, Entity) -> List<Pair<Entity, Entity>> = { source, target -> listOf(source to target)},
+    @Transient val lambda: (Entity, Entity?) -> List<Pair<Entity, Entity?>> = { source, target -> listOf(source to target)},
     @Transient val display: String = "None"
 ) {
 
