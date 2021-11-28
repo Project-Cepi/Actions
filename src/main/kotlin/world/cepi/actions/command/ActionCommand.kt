@@ -10,6 +10,7 @@ object ActionCommand : Kommand({
         CreateSubcommand,
         RunSubcommand,
         SwapSubcommand,
-        TargetSystemSubcommand
+        TargetSystemSubcommand,
+        TimingSubcommand
     )
 }, "action")
