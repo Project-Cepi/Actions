@@ -40,7 +40,7 @@ data class ActionItem(
     }
 
     operator fun invoke(source: Entity, target: Entity?) {
-        targetSystem.lambda(source, target).forEach { targetSystemPair ->
+        targetSystem.lambda!!(source, target).forEach { targetSystemPair ->
             targetArgType.lambda(targetSystemPair.first, targetSystemPair.second).let {
                 if (it.first == null) return@let
                 action.invoke(it.first!!, it.second)
