@@ -24,6 +24,7 @@ object ActionSerializer {
             subclass(MessageAction::class)
             subclass(RemoveAction::class)
             subclass(SoundAction::class)
+            subclass(DebugAction::class)
 
             actions.forEach {
                 subclass(it.clazz as KClass<Action>, it.serializer as KSerializer<Action>)

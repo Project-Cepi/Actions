@@ -4,12 +4,14 @@ import kotlinx.serialization.Serializable
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.NamedTextColor
 import net.kyori.adventure.text.format.TextDecoration
+import net.minestom.server.adventure.audience.Audiences
 import net.minestom.server.entity.Entity
 import net.minestom.server.item.ItemStack
 import net.minestom.server.item.Material
 import world.cepi.kstom.item.get
 import world.cepi.kstom.item.item
 import world.cepi.kstom.item.set
+import world.cepi.kstom.util.sendMessage
 
 @Serializable
 data class ActionItem(
@@ -28,7 +30,9 @@ data class ActionItem(
 
         lore(
             Component.empty(),
-            timing?.display() ?: Component.text("No timing", NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, false)
+            timing?.display() ?: Component.text("Timing: None", NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, false),
+            Component.text("Swap Type: ", NamedTextColor.GRAY).append(Component.text(targetArgType.demonstrate, NamedTextColor.RED)).decoration(TextDecoration.ITALIC, false),
+            Component.text("Targeting: ", NamedTextColor.GRAY).append(Component.text(targetSystem.display, NamedTextColor.RED)).decoration(TextDecoration.ITALIC, false)
         )
 
         this["action", ActionSerializer.module] = this@ActionItem

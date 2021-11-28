@@ -20,7 +20,7 @@ data class ActionTiming(
         Manager.scheduler.buildTask(lambda).repeat(repeatEvery).let { if (delay != null) it.delay(delay) else it }.schedule()
     }
 
-    fun display() = Component.text("Repeats every ", NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, false)
+    fun display() = Component.text("Timing: Repeats every ", NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, false)
         .append(Component.text(repeatEvery.seconds, NamedTextColor.RED))
         .append(Component.text("s ", NamedTextColor.GRAY))
         .let {

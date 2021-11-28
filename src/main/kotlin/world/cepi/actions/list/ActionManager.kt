@@ -15,6 +15,7 @@ object ActionManager : Iterable<KClass<out Action>> {
         SoundAction::class,
         FlingAction::class,
         RemoveAction::class,
+        DebugAction::class,
         MessageAction::class
     )
 
