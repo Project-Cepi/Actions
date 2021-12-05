@@ -11,6 +11,7 @@ import net.minestom.server.item.Material
 import world.cepi.kstom.item.get
 import world.cepi.kstom.item.item
 import world.cepi.kstom.item.set
+import world.cepi.kstom.util.pascalToTitle
 import world.cepi.kstom.util.sendMessage
 
 @Serializable
@@ -23,9 +24,7 @@ data class ActionItem(
     fun renderItem() = item(Material.RED_DYE) {
 
         displayName(
-            Component.text(Regex("[A-Z][a-z]+")
-                .findAll(action::class.simpleName!!)
-                .map { it.value }.joinToString(" "), NamedTextColor.RED).decoration(TextDecoration.ITALIC, false)
+            Component.text(action::class.simpleName!!.pascalToTitle(), NamedTextColor.RED).decoration(TextDecoration.ITALIC, false)
         )
 
         lore(
@@ -40,7 +39,7 @@ data class ActionItem(
     }
 
     operator fun invoke(source: Entity, target: Entity?) {
-        targetSystem.lambda!!(source, target).forEach { targetSystemPair ->
+        targetSystem.lambda(source, target).forEach { targetSystemPair ->
             targetArgType.lambda(targetSystemPair.first, targetSystemPair.second).let {
                 if (it.first == null) return@let
                 action.invoke(it.first!!, it.second)
