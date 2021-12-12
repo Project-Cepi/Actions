@@ -19,6 +19,7 @@ object ActionSerializer {
             subclass(FlingAction::class)
             subclass(MessageAction::class)
             subclass(RemoveAction::class)
+            subclass(TeleportAction::class)
             subclass(SoundAction::class)
             subclass(DebugAction::class)
             subclass(DashAction::class)
