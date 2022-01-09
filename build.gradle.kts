@@ -38,10 +38,10 @@ dependencies {
     compileOnly(kotlin("reflect"))
 
     // Compile Minestom into project
-    compileOnly("com.github.Minestom:Minestom:fb39fa59f5")
+    compileOnly("com.github.Minestom:Minestom:4ee5cbe424")
 
     // Add KStom
-    compileOnly("com.github.Project-Cepi:KStom:5dd81b4efe")
+    compileOnly("com.github.Project-Cepi:KStom:05b5e1f2a1")
 
     // Add Kepi
     compileOnly("com.github.Project-Cepi:Kepi:de037535d0")
@@ -63,7 +63,7 @@ configurations {
 tasks {
     processResources {
         // Apply properties to extension.json
-        filesMatching("extension.json") {
+        filesMatching("META-INF/extension.json") {
             expand(project.properties)
         }
     }

@@ -2,6 +2,8 @@ package world.cepi.actions.command.subcommands
 
 import net.minestom.server.command.builder.arguments.ArgumentType
 import world.cepi.actions.list.ActionManager
+import world.cepi.kstom.command.arguments.generation.ClassArgumentGenerator
+import world.cepi.kstom.command.arguments.generation.ClassArgumentGenerator.Companion.syntaxesFrom
 import world.cepi.kstom.command.arguments.generation.generateSyntaxes
 import world.cepi.kstom.command.arguments.literal
 import world.cepi.kstom.command.kommand.Kommand
@@ -14,7 +16,7 @@ object QuickSubcommand : Kommand({
     val entityToTarget = ArgumentType.Entity("target").singleEntity(true)
 
     ActionManager.forEach { clazz ->
-        val syntaxes = generateSyntaxes(clazz)
+        val syntaxes = ClassArgumentGenerator(clazz)
         val actionLiteral = clazz.simpleName!!
             .dropLast("Action".length)
             .replaceFirstChar { it.lowercase() }.literal()
