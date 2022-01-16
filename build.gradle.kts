@@ -41,13 +41,13 @@ dependencies {
     compileOnly("com.github.Minestom:Minestom:4ee5cbe424")
 
     // Add KStom
-    compileOnly("com.github.Project-Cepi:KStom:05b5e1f2a1")
+    compileOnly("com.github.Project-Cepi:KStom:1171ec2cf7")
 
     // Add Kepi
     compileOnly("com.github.Project-Cepi:Kepi:de037535d0")
 
     // Add Particles
-    compileOnly("com.github.Project-Cepi:Particable:9d08bbd4cc")
+    compileOnly("com.github.Project-Cepi:Particable:e864eb601b")
 
     // import kotlinx serialization
     compileOnly("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
