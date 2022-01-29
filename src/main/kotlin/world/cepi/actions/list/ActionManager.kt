@@ -17,7 +17,6 @@ object ActionManager : Iterable<KClass<out Action>> {
         DebugAction::class,
         TeleportAction::class,
         DashAction::class,
-        DropAction::class,
         MessageAction::class,
         VampireFixedAction::class,
         VampirePercentageAction::class

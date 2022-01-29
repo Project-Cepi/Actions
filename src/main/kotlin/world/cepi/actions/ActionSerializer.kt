@@ -17,7 +17,6 @@ object ActionSerializer {
     val module get() = SerializersModule {
         polymorphic(Action::class) {
             subclass(FlingAction::class)
-            subclass(DropAction::class)
             subclass(MessageAction::class)
             subclass(RemoveAction::class)
             subclass(TeleportAction::class)

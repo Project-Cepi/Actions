@@ -49,9 +49,6 @@ dependencies {
     // Add Particles
     compileOnly("com.github.Project-Cepi:Particable:e864eb601b")
 
-    // Add drops
-    compileOnly("com.github.Project-Cepi:Drops:b940acc9ac")
-
     // import kotlinx serialization
     compileOnly("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
 }
