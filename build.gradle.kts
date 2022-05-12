@@ -50,7 +50,7 @@ dependencies {
     compileOnly("com.github.Project-Cepi:Particable:e864eb601b")
 
     // import kotlinx serialization
-    compileOnly("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
+    compileOnly("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3")
 }
 
 configurations {
