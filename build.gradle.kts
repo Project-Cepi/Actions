@@ -38,10 +38,10 @@ dependencies {
     compileOnly(kotlin("reflect"))
 
     // Compile Minestom into project
-    compileOnly("com.github.Minestom:Minestom:4ee5cbe424")
+    compileOnly("com.github.Minestom", "Minestom", "7867313290")
 
     // Add KStom
-    compileOnly("com.github.Project-Cepi:KStom:1171ec2cf7")
+    compileOnly("com.github.Project-Cepi:KStom:82f7000079")
 
     // Add Kepi
     compileOnly("com.github.Project-Cepi:Kepi:de037535d0")
@@ -51,6 +51,9 @@ dependencies {
 
     // import kotlinx serialization
     compileOnly("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3")
+
+    // Add MiniMessage
+    implementation("net.kyori:adventure-text-minimessage:4.10.1")
 }
 
 configurations {
