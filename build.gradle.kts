@@ -50,7 +50,7 @@ dependencies {
     compileOnly("com.github.Project-Cepi:Particable:e864eb601b")
 
     // import kotlinx serialization
-    compileOnly("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3")
+    compileOnly("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
 
     // Add MiniMessage
     implementation("net.kyori:adventure-text-minimessage:4.11.0")
